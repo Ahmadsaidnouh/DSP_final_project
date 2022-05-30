@@ -7,11 +7,12 @@ try
         fs = fs_user;
     end
 catch ex
-    errordlg('No file with such name exists!!');
+    errordlg('No wave file with such name exists!!');
     return
 end
 Ns = length(x);
-t= 0:1/fs:(Ns-1)/fs;
+disp(Ns)
+t = 0:1/fs:(Ns-1)/fs;
 T = linspace(-fs/2,fs/2,Ns);
 
 
@@ -65,6 +66,7 @@ xt_amp_filtered = x1_amp_filtered + x2_amp_filtered + x3_amp_filtered + x4_amp_f
 
 custom_plot(x, xt_amp_filtered, t, T, fs, ' original', ' filtered')
 
+disp(length(xt_amp_filtered))
 audiowrite('new.wav',xt_amp_filtered,fs)
 
 end
